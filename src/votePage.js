@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Voting from './vote';
+import TempVote from './tempVote';
 import Bar from './bar';
 import Particles from 'react-particles-js';
+
 class votePage extends Component {
  
 	constructor(props) {
@@ -33,7 +35,7 @@ class votePage extends Component {
         }}>          </Particles>
         <div class="z-n2">
 	<Bar />
-	<Voting />
+	<TempVote />
 	</div>
   </div>
     );

@@ -74,6 +74,12 @@ class Verify extends React.Component {
 		});
 	
 	}
+	componentWillMount(){
+        let test = JSON.parse(localStorage.getItem("logged"));
+        if(!test){
+            this.props.history.push('/');
+        }
+     }
 	backTrack() {
 		this.props.history.goBack();
 	}

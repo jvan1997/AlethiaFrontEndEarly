@@ -56,6 +56,12 @@ class Create extends Component {
         backTrack(){
      	this.props.history.goBack();
      }  
+     componentWillMount(){
+        let test = JSON.parse(localStorage.getItem("logged"));
+        if(!test){
+            this.props.history.push('/');
+        }
+     }
      componentWillUnmount() {
 		clearInterval(this.timeout);
 	  }

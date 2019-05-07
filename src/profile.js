@@ -23,7 +23,9 @@ class Profile extends React.Component {
    * Once subscribed, the 'user' parameter will either be null 
    * (logged out) or an Object (logged in)
    */
-  componentDidMount() {
+  componentWillMount() {
+	let test = JSON.parse(localStorage.getItem("logged"));
+	if(test){
     this.authSubscription = firebaseApp.auth().onAuthStateChanged((user) => {
 		entry().get().then((doc) => {
 			if (doc.exists) {
@@ -40,7 +42,11 @@ class Profile extends React.Component {
 			  });
 		})
 
-    });
+	});}
+	else{
+		this.props.history.push('/');
+		window.location.reload();
+	}
   }
   /**
    * Don't forget to stop listening for authentication state changes
@@ -107,8 +113,7 @@ vote = (e) =>{
       <div class="w-10 h-10 rounded-full mr-4"></div>
     </div>
   </div>
-					 <button class="inline-block  mr-12 h-16 w-32 border-b-2 border-t-2 border-l-2 border-r-2 font-fancy font-bold text-lg leading-none border rounded bg-transparent text-white border-white hover:border-grey hover:text-grey mt-4 mb-4 lg:mt-0" value="profile" style={{cursor:'pointer'}} onClick={this.offLoad}>Close</button>
-					 <button class="inline-block  ml-12 h-16 w-32 border-b-2 border-t-2 border-l-2 border-r-2 font-fancy font-bold text-lg leading-none border rounded bg-transparent text-white border-white hover:border-grey hover:text-grey mt-4 mb-4 lg:mt-0" value="profile" style={{cursor:'pointer'}} onClick={this.createCert}>Create</button>
+					 <button class="inline-block  ml-12 h-16 w-2/3 border-b-2 border-t-2 border-l-2 border-r-2 font-fancy font-bold text-lg leading-none border rounded bg-transparent text-white border-white hover:border-grey hover:text-grey mt-4 mb-4 lg:mt-0" value="profile" style={{cursor:'pointer'}} onClick={this.createCert}>Create</button>
 
 					</div>
 					</div>
